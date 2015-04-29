@@ -13,11 +13,12 @@ class Event extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('event_model');
+		$this->load->helper('url');
 	}
     //put your code here
 	public function index()
 	{
-		$this->load->helper('url');
+		
 		$data['events'] = $this->event_model->get_events();
 		$data['title'] = "Events";
 		$this->load->view('templates/header');
@@ -27,9 +28,11 @@ class Event extends CI_Controller {
 	}
 
 	public function view($slug = NULL) 	{
-		$data['news_item'] = $this->news_model->get_news($slug);
+		$data['title'] = "Events";
+		$data['event_item'] = $this->event_model->get_events($slug);
+
+		
 		$this->load->view('templates/header');
-		//get all events from database
 		$this->load->view('event/event',$data);
 		$this->load->view('templates/footer');
 	}

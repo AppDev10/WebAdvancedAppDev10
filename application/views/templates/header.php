@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-	<link rel="stylesheet" href="<?=base_url(array("assets","css","styles.css"))?>">
+	<link rel="stylesheet" href="<?=base_url(array("assets","css","styles.css?ver=1.1"))?>">
 </head>
 <body>
 
@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="col-md-4" id="test">
 						<div class="btn-group-vertical" role="group" aria-label="...">
-							<button type="button" class="btn btn-default loginButton">Inloggen</button>
+							<button type="submit" onClick="window.location.replace('<?php echo base_url(array("login"))?>');" class="btn btn-default loginButton">Inloggen</button>
 							<button type="button" class="btn btn-default loginButton">Registreer</button>
 						</div>
 					</div>

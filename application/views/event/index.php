@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php foreach ($events as $event_item): ?>
     <div class="media">
       <div class="media-left">
-        <a href="<?php echo base_url(array('event/', $event_item['slug'])) ?>">
+        <a href="<?php echo base_url(array('event','view', $event_item['slug'])) ?>">
             <img class="media-object" src="<?=base_url(array('assets','images','events',$event_item['imageName']))?>" alt="...">
       </a>
   </div>
