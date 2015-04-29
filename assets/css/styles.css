@@ -1,10 +1,12 @@
 body { 
-    padding-top: 70px;
+    padding-top: 150px;
     background-color: #f1f1f1;
+    color:#626262;
 }
 
 .navbar-default {
-    border-color:#ff2200;
+    border-color:#fe2b06;
+    background-color: #fff;
     border-bottom-width: 3px;
 }
 
@@ -12,6 +14,48 @@ ul.nav li {
     padding:0 auto;
 }
 
+#header-image {
+	height:100px;
+}
+
+.btn-group-vertical{
+	margin-left: 10%;
+}
+
 hr {
     border-bottom: 1px solid #ff2200;
+}
+
+h1 {
+	color:#171717;
+}
+
+.media {
+	background-color: #fff;
+	padding:10px;
+}
+
+.panel-header {
+	color:#171717;
+	font-weight: bold;
+}
+
+h5 {
+	float:right;
+	margin:0;
+}
+h6 {
+	float:right;
+	margin:0;
+}
+
+h3 {
+	font-size:11px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin:0;
+}
+
+hr.streep {
+	margin:0;
 }

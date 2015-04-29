@@ -3561,7 +3561,7 @@ tbody.collapse.in {
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;
-  float: left;
+  float: right;
 }
 .btn-group > .btn:hover,
 .btn-group-vertical > .btn:hover,
@@ -3655,7 +3655,7 @@ tbody.collapse.in {
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {
   display: block;
-  float: none;
+  float: right;
   width: 100%;
   max-width: 100%;
 }

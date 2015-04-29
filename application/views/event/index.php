@@ -1,34 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-        <div class="container">
-            <div class="row">
-                <h1 class="col-lg-12 col-md-12 col-sm-12 col-sm-12 event">EVENTS</h1>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 event">
-                    <div class="panel panel-default">
-			<div class="panel-body">
-				Panel heading
-				<hr/>
-				Panel content
-			</div>
-                    </div>
-                    <div class="panel panel-default">
-			<div class="panel-body">
-				Panel heading
-				<hr/>
-				Panel content
-			</div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
+<div class="container">
+    <h1><?php echo $title ?></h1>
+    <?php foreach ($events as $event_item): ?>
+    <div class="media">
+      <div class="media-left">
+        <a href="<?php echo base_url(array('event/', $event_item['slug'])) ?>">
+            <img class="media-object" src="<?=base_url(array('assets','images','events',$event_item['imageName']))?>" alt="...">
+      </a>
+  </div>
+  <div class="media-body">
+    <h5>Hogeschool PXL</h5>
+    <h6>Elfdeliniestraat</h6>
+    <h3><?php echo $event_item['date']?></h3>
+    <h4 class="media-heading"><?php echo $event_item['title'] ?></h4>
+    
+    <hr class="streep"/>
+    <?php echo $event_item['text'] ?>
+</div>
+</div>
+
+<?php endforeach ?>
+</div>
 
 

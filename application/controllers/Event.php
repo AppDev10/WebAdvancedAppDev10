@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,19 +7,31 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of Event
- *
- * @author 11302014
- */
+
+
 class Event extends CI_Controller {
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('event_model');
+	}
     //put your code here
-    public function index()
+	public function index()
 	{
 		$this->load->helper('url');
-		//$this->load->view('welcome_message');
+		$data['events'] = $this->event_model->get_events();
+		$data['title'] = "Events";
 		$this->load->view('templates/header');
-		$this->load->view('event/index');
+		//get all events from database
+		$this->load->view('event/index',$data);
 		$this->load->view('templates/footer');
 	}
+
+	public function view($slug = NULL) 	{
+		$data['news_item'] = $this->news_model->get_news($slug);
+		$this->load->view('templates/header');
+		//get all events from database
+		$this->load->view('event/event',$data);
+		$this->load->view('templates/footer');
+	}
+
 }
