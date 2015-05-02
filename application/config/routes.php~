@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['login'] = 'login';
+$route['logout'] = 'logout';
 $route['home'] = 'home';
 $route['home/(:any)'] = 'home/view/$1';
 $route['event'] = 'event';
