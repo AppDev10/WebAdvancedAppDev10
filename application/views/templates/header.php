@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title><?php echo "TEDxPXL - ".$title;?></title>
 
 	<link rel="stylesheet" href="<?=base_url(array("assets","bootstrap","bootstrap.css"))?>">
-
+	<link rel="icon" href="<?=base_url(array("assets","images","favicon.ico"))?>" type="image/x-icon">
 	
 
 	<!-- jQuery library -->
@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="<?=base_url(array("assets","css","styles.css?ver=1.1"))?>">
+
 </head>
 <body>
 
@@ -73,3 +74,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</nav>
+		<div class="container">

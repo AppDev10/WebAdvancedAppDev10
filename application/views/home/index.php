@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div class="container">
     <h1><?php echo $title ?></h1>
     <?php foreach ($news as $news_item): ?>
     <div class="panel panel-default">
@@ -16,6 +15,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 <?php endforeach ?>
-</div>
-
-

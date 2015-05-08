@@ -1,4 +1,3 @@
-  <div class="container">
     <h1>Simple Login with CodeIgniter</h1>
     <div class="panel panel-default">
       <div class="panel-body">
@@ -16,5 +15,3 @@
      </div>
    </div>
  </div>
-
-</div>

@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div class="container">
     <h1><?php echo $title ?></h1>
     <?php foreach ($events as $event_item): ?>
     <div class="media">
@@ -22,6 +21,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <?php endforeach ?>
-</div>
 
 

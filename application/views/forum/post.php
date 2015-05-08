@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div class="container">
     <h1><?php echo $title ?></h1>
     <div class="panel panel-default">
         <div class="panel-body">
@@ -12,6 +11,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
-</div>
 
 

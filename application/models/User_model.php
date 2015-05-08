@@ -1,9 +1,9 @@
 <?php
-Class Login_model extends CI_Model
+Class User_model extends CI_Model
 {
  function login($username, $password)
  {
-   $this -> db -> select('id, username, password');
+   $this -> db -> select('id, username, password,admin');
    $this -> db -> from('users');
    $this -> db -> where('username', $username);
    $this -> db -> where('password', $password);
@@ -25,5 +25,18 @@ Class Login_model extends CI_Model
   $query = $this->db->get_where('users',array('username'=>$username,'password'=>$password));
   return $query->row_array();
  }
+
+
+function add_user() {
+  $data = array(
+    'username'=>$this->input->post('username'),
+    'password'=>$this->input->post('password'),
+    'email'=>$this->input->post('email'),
+    'name'=>$this->input->post('naam'),
+    'firstName'=>$this->input->post('voornaam'),
+    'avatar'=>$this->input->post('avatar')
+    );
+  $this->db->insert('users',$data);
 }
-?>
+}
+?> 

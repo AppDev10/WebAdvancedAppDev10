@@ -1,0 +1,1 @@
+<h1>DIt is de adminPage voor about</h1>

@@ -12,24 +12,41 @@ class Forum extends CI_Controller {
 
 	public function index()
 	{
-		
-		$data['posts'] = $this->forum_model->get_posts();
-		$data['title'] = "Forum";
+		if(isset($this->session->all_userdata()['logged_in'])&&$this->session->all_userdata()['logged_in']['admin']) {
+			$data['posts'] = $this->forum_model->get_posts();
+			$data['title'] = "Forum";
 
-		$this->load->view('templates/header',$data);
-		$this->load->view('forum/index',$data);
-		$this->load->view('templates/footer');
+			$this->load->view('templates/header',$data);
+			$this->load->view('forum/admin',$data);
+			$this->load->view('forum/index',$data);
+			$this->load->view('templates/footer');
+		}else {
+			$data['posts'] = $this->forum_model->get_posts();
+			$data['title'] = "Forum";
+
+			$this->load->view('templates/header',$data);
+			$this->load->view('forum/index',$data);
+			$this->load->view('templates/footer');
+		}
 	}
 
 	public function view($slug = NULL) 	{
-
-		if($this->session->userdata('logged_in'))
+		if(isset($this->session->all_userdata()['logged_in'])&&$this->session->all_userdata()['logged_in']['admin']) 
 		{
 			$data['post_item'] = $this->forum_model->get_posts($slug);
 			$data['title'] = "Forum - " . $data['post_item']['title'];
 
 			$this->load->view('templates/header',$data);
-			//get all events from database
+			$this->load->view('forum/admin',$data);
+			$this->load->view('forum/post',$data);
+			$this->load->view('templates/footer');
+		}
+		elseif($this->session->userdata('logged_in'))
+		{
+			$data['post_item'] = $this->forum_model->get_posts($slug);
+			$data['title'] = "Forum - " . $data['post_item']['title'];
+
+			$this->load->view('templates/header',$data);
 			$this->load->view('forum/post',$data);
 			$this->load->view('templates/footer');
 		}
@@ -37,10 +54,10 @@ class Forum extends CI_Controller {
 		{
      		//If no session, redirect to login page
 			$this->load->helper(array('form'));
-   			$data['title'] = "login";
-   			$this->load->view('templates/header',$data);
-   			$this->load->view('login/access-denied');
-   			$this->load->view('templates/footer');
+			$data['title'] = "login";
+			$this->load->view('templates/header',$data);
+			$this->load->view('login/access-denied');
+			$this->load->view('templates/footer');
 		}
 		
 	}

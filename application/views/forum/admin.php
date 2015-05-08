@@ -1,0 +1,1 @@
+<h1>adminPart for Forum</h1>
