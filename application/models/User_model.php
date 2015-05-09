@@ -34,8 +34,7 @@ Class User_model extends CI_Model
      
     $query = $this->db->get_where('users',array('id'=>$id));
     return $query->row_array();
- }
- 
+ } 
  function matchUserWithID($responses) {
      $i = 0;
      $toReturn = array();
@@ -50,7 +49,6 @@ Class User_model extends CI_Model
      
      return $toReturn;
  }
-
 
 function add_user() {
   $data = array(

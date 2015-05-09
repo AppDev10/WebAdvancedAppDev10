@@ -9,10 +9,12 @@ class Forum extends CI_Controller {
 		$this->load->model('forum_model');
                 $this->load->model('user_model');
 		$this->load->helper('url');
+                $this->load->helper('breadcrumb');
 	}
 
 	public function index()
 	{
+
             $data['title'] = "Forum";
             
 		if(isset($this->session->all_userdata()['logged_in'])) {
@@ -39,13 +41,12 @@ class Forum extends CI_Controller {
                 }
                 else {
                     
-                    $data['posts'] = $this->forum_model->get_posts();
-                    
-			$this->load->view('templates/header',$data);
+                    $data['posts'] = $this->forum_model->get_posts();			$this->load->view('templates/header',$data);
 			$this->load->view('forum/index',$data);
 			$this->load->view('templates/footer');
 		}
 	}
+
 
 	public function view($id) {
           

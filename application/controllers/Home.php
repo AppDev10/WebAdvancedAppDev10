@@ -8,10 +8,17 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('news_model');
 		$this->load->helper('url');
+                $this->load->helper('breadcrumb');
 	}
 
+        public function Home()
+        {
+ 		parent::Controller();
+        }
+        
 	public function index()
 	{
+            
 		if(isset($this->session->all_userdata()['logged_in'])&&$this->session->all_userdata()['logged_in']['admin']){
 			$this->load->helper('url');
 		$data['news'] = $this->news_model->get_news();

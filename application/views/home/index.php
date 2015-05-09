@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
     <h1><?php echo $title ?></h1>
+    <?php echo set_breadcrumb(); ?>
     <?php foreach ($news as $news_item): ?>
     <div class="panel panel-default">
         <div class="panel-body">
