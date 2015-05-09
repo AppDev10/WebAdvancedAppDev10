@@ -59,3 +59,29 @@ h3 {
 hr.streep {
 	margin:0;
 }
+
+.forum_response {
+    margin-top: 17px;
+    margin-bottom: 17px;
+}
+
+.forum_name {
+    font-weight: bold;
+}
+
+.panel-footer hr {
+    
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.forum_textarea {
+     resize: vertical;
+     min-height: 54px;
+}
+
+.forum_date {
+    text-align: right;
+}
