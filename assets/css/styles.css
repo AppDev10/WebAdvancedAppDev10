@@ -59,3 +59,11 @@ h3 {
 hr.streep {
 	margin:0;
 }
+
+.response {
+    margin-bottom: 10px;
+}
+
+.panel-footer hr {
+    border-bottom: 1px solid #626262;
+}

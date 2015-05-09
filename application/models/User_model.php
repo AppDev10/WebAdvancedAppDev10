@@ -25,6 +25,16 @@ Class User_model extends CI_Model
   $query = $this->db->get_where('users',array('username'=>$username,'password'=>$password));
   return $query->row_array();
  }
+ 
+ function get_user($id = false) {
+    if ($id === false) {
+        $query = $this->db->get('users');
+        return $query->result_array();
+    }
+     
+    $query = $this->db->get_where('users',array('id'=>$id));
+    return $query->row_array();
+ }
 
 
 function add_user() {
