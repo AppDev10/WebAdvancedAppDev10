@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
     <h1><?php echo $title ?></h1>
+    <?php echo set_breadcrumb(); ?>
     <?php foreach ($events as $event_item): ?>
     <div class="media">
       <div class="media-left">

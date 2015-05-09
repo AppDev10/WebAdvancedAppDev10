@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Search">
 							</div>
-							<button type="submit" class="btn btn-default">Zoek</button>
+                                                    <button type="submit" class="btn btn-default">Zoek</button>
 						</form>
 					</div>
 				</div>
