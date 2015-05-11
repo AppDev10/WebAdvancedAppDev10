@@ -30,6 +30,10 @@ class Forum extends CI_Controller {
 
 			$this->load->view('templates/header',$data);
                         if ($this->session->all_userdata()['logged_in']['admin']) {
+                            $data['reports'] = $this->forum_model->get_reports();
+                            $data['reports'] = $this->user_model->matchUserWithID($data['reports']);
+                            
+                            
                             $this->load->view('forum/admin',$data);
                         }
                         $this->load->view('forum/newPostForm',$data);
@@ -62,15 +66,10 @@ class Forum extends CI_Controller {
                     
                     $data['post_item'] = $this->forum_model->get_posts($id);
                     $data['title'] = "Forum - " . $data['post_item']->title;
-                    $data['responses'] = $this->forum_model->get_responsesonposts($id);
+                    $data['responses'] = $this->forum_model->get_responsesonpostsByPostID($id);
                     $data['responses'] = $this->user_model->matchUserWithID($data['responses']);
 
-                    $this->load->view('templates/header',$data);
-                    
-                    if ($this->session->all_userdata()['logged_in']['admin']) {
-                        $this->load->view('forum/admin',$data);
-                    }
-                    
+                    $this->load->view('templates/header',$data);                    
                     $this->load->view('forum/post',$data);
                     $this->load->view('templates/footer');
 		}
@@ -85,4 +84,70 @@ class Forum extends CI_Controller {
 		}
 		
 	}
+        
+        public function deletepost($postid) {
+            $report = new stdClass(); 
+           
+            if(isset($this->session->all_userdata()['logged_in'])&&$this->session->all_userdata()['logged_in']['admin']) 
+            {
+                $this->forum_model->delete_post($postid);
+                $this->forum_model->delete_reportsByPostID($postid);
+            }
+            else if (isset($this->session->all_userdata()['logged_in'])) {
+                $report->userid = $this->session->all_userdata()['logged_in']['id'];
+                $report->postid = $postid;
+                $report->responseid = -1;
+                
+                $this->forum_model->post_report($report);
+            }
+            else {
+                $report->userid = -1;
+                $report->postid = $postid;
+                $report->responseid = -1;
+
+                $this->forum_model->post_report($report);
+            }
+            
+            
+            
+            self::index();
+        }
+        
+        public function deleteresponse($responseid) {
+            
+            $postid = $this->forum_model->get_responsesonposts($responseid)->postid;
+            $report = new stdClass(); 
+            
+            if(isset($this->session->all_userdata()['logged_in'])&&$this->session->all_userdata()['logged_in']['admin']) 
+            {
+                $this->forum_model->delete_responsesonposts($responseid);
+                $this->forum_model->delete_reportsByResponseID($responseid);
+            }
+            else if (isset($this->session->all_userdata()['logged_in'])) {
+                $report->userid = $this->session->all_userdata()['logged_in']['id'];
+                $report->postid = $postid;
+                $report->responseid = $responseid;
+                
+                $this->forum_model->post_report($report);
+            }
+            else {
+                $report->userid = -1;
+                $report->postid = $postid;
+                $report->responseid = $responseid;
+                
+                $this->forum_model->post_report($report);
+            }
+            
+            self::view($postid);
+        }
+        
+         public function deletereport($reportid) {
+            
+            if(isset($this->session->all_userdata()['logged_in'])&&$this->session->all_userdata()['logged_in']['admin']) 
+            {
+                $this->forum_model->delete_report($reportid);
+            }
+            
+            self::index();
+        }
 }

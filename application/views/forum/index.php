@@ -10,7 +10,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="content">
-                <span class="panel-header"><?php echo nl2br( htmlentities( $post_item->title ) )?></span> - <?php echo $post_item->datetime ?>
+                <span class="panel-header"><?php echo nl2br( htmlentities( $post_item->title ) )?></span>
+                - <?php echo $post_item->datetime ?>
+                <a href="<?php echo base_url(array('forum','deletepost', $post_item->id)) ?>" class="forum_remove btn btn-default">x</a>
                 <hr/>
                 <?php echo nl2br( htmlentities( $post_item->text ) ) ?>
                 <br/>

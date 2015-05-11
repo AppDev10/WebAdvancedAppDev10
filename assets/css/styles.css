@@ -85,3 +85,7 @@ hr.streep {
 .forum_date {
     text-align: right;
 }
+
+.forum_remove {
+    margin-left: 10px;
+}

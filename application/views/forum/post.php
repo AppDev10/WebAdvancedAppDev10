@@ -18,18 +18,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="forum_response" id="response<?php echo ($i + 1) ?>">
                 
                     <div class="row">
-                        <div class="col-lg-10 col-md-9 col-sm-9 col-sx-12">
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-sx-12">
                             <span class="forum_name"> - <?php echo $res->user->username ?> </span>
                             <?php echo nl2br( htmlentities( $res->response)) ?>
                         </div>
-                        <div class="forum_date col-lg-2 col-md-3 col-sm-3 col-sx-12">
+                        <div class="forum_date col-lg-3 col-md-3 col-sm-4 col-sx-12">
                             <?php echo $res->datetime; ?>
+                            <a href="<?php echo base_url(array('forum','deleteresponse', $res->id)) ?>" class="forum_remove btn btn-default">x</a>
                         </div>
+                        
                     </div>
                 
                 </div>
+                <?php if ($i !== count($responses) - 1) : ?>
                 <hr class="respons"/>
-                
+                <?php endif; ?>
             <?php endfor; ?>
                 
                 <form action="<?php echo base_url(array('forum','view', $post_item->id)); ?>" method="post">

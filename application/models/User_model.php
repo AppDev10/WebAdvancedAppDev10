@@ -41,11 +41,23 @@ Class User_model extends CI_Model
      $toReturn = array();
      
      foreach ($responses as $res) {
-         $user = self::get_user($res->userid);
-         $res->user = $user;
+         if ($res->userid != -1) {
+            $user = self::get_user($res->userid);
+            $res->user = $user;
+
+            $toReturn[$i] = $res;
+            $i++;
+         }
+         else {
+            $user = new stdClass();
+            $user->username = "Annoniem";
+            
+            $res->user = $user;
+            
+            $toReturn[$i] = $res;
+            $i++;
+         }
          
-         $toReturn[$i] = $res;
-         $i++;
      }
      
      return $toReturn;
