@@ -29,19 +29,20 @@ Class User_model extends CI_Model
  function get_user($id = false) {
     if ($id === false) {
         $query = $this->db->get('users');
-        return $query->result_array();
+        return $query->result();
     }
      
     $query = $this->db->get_where('users',array('id'=>$id));
-    return $query->row_array();
- } 
+    return $query->result()[0];
+ }
+ 
  function matchUserWithID($responses) {
      $i = 0;
      $toReturn = array();
      
      foreach ($responses as $res) {
-         $user = self::get_user($res['userid']);
-         $res["user"] = $user;
+         $user = self::get_user($res->userid);
+         $res->user = $user;
          
          $toReturn[$i] = $res;
          $i++;
@@ -49,6 +50,7 @@ Class User_model extends CI_Model
      
      return $toReturn;
  }
+
 
 function add_user() {
   $data = array(

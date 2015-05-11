@@ -5,32 +5,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="content">
-                <span class="panel-header"><?php echo $post_item['title'] ?></span> - <?php echo $post_item['datetime'] ?>
+                <span class="panel-header"><?php echo nl2br( htmlentities( $post_item->title ) ) ?></span> - <?php echo $post_item->datetime ?>
                 <hr/>
-                <?php echo $post_item['text'] ?>
+                <?php echo  nl2br( htmlentities( $post_item->text ) ) ?>
             </div>
         </div>
         <div class="panel-footer">
             <div class="content">
-            <?php foreach ($responses as $res): ?>
-                <div class="forum_response">
+            <?php for ($i = 0; $i < count($responses);$i++): 
+                $res = $responses[$i];
+            ?>
+                <div class="forum_response" id="response<?php echo ($i + 1) ?>">
                 
                     <div class="row">
                         <div class="col-lg-10 col-md-9 col-sm-9 col-sx-12">
-                            <span class="forum_name"> - <?php echo $res['user']['username'] ?> </span>
-                            <?php echo $res['response']; ?>
+                            <span class="forum_name"> - <?php echo $res->user->username ?> </span>
+                            <?php echo nl2br( htmlentities( $res->response)) ?>
                         </div>
                         <div class="forum_date col-lg-2 col-md-3 col-sm-3 col-sx-12">
-                            <?php echo $res['datetime']; ?>
+                            <?php echo $res->datetime; ?>
                         </div>
                     </div>
                 
                 </div>
                 <hr class="respons"/>
                 
-            <?php endforeach; ?>
+            <?php endfor; ?>
                 
-                <form action="<?php echo base_url(array('forum','view', $post_item['id'])) ?>" method="post">
+                <form action="<?php echo base_url(array('forum','view', $post_item->id)); ?>" method="post">
                     <div class="input-group">
                         
                             <span class="input-group-addon">reactie:</span>

@@ -9,12 +9,10 @@ class Forum extends CI_Controller {
 		$this->load->model('forum_model');
                 $this->load->model('user_model');
 		$this->load->helper('url');
-                $this->load->helper('breadcrumb');
 	}
 
 	public function index()
 	{
-
             $data['title'] = "Forum";
             
 		if(isset($this->session->all_userdata()['logged_in'])) {
@@ -41,19 +39,20 @@ class Forum extends CI_Controller {
                 }
                 else {
                     
-                    $data['posts'] = $this->forum_model->get_posts();			$this->load->view('templates/header',$data);
+                    $data['posts'] = $this->forum_model->get_posts();
+                    
+			$this->load->view('templates/header',$data);
 			$this->load->view('forum/index',$data);
 			$this->load->view('templates/footer');
 		}
 	}
-
 
 	public function view($id) {
           
 		if(isset($this->session->all_userdata()['logged_in'])) 
 		{
                     $responseRecieved = $this->input->post('response', TRUE);
-                    if ($responseRecieved !== NULL) {
+                    if ($responseRecieved !== NULL && $responseRecieved !=  "") {
                         $toAddResponse['response'] = $responseRecieved;
                         $toAddResponse['postid'] = $id;
                         $toAddResponse['userid'] = $this->session->all_userdata()['logged_in']['id'];
@@ -62,7 +61,7 @@ class Forum extends CI_Controller {
                     }
                     
                     $data['post_item'] = $this->forum_model->get_posts($id);
-                    $data['title'] = "Forum - " . $data['post_item']['title'];
+                    $data['title'] = "Forum - " . $data['post_item']->title;
                     $data['responses'] = $this->forum_model->get_responsesonposts($id);
                     $data['responses'] = $this->user_model->matchUserWithID($data['responses']);
 
