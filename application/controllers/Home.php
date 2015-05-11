@@ -8,7 +8,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('news_model');
 		$this->load->helper('url');
-                $this->load->helper('breadcrumb');
+        $this->load->helper('breadcrumb');
 	}
 
         public function Home()

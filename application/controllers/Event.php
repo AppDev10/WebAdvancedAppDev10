@@ -14,7 +14,7 @@ class Event extends CI_Controller {
 		parent::__construct();
 		$this->load->model('event_model');
 		$this->load->helper('url');
-                $this->load->helper('breadcrumb');
+        $this->load->helper('breadcrumb');
 	}
     //put your code here
 	public function index()

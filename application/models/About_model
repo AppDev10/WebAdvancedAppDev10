@@ -1,0 +1,22 @@
+<?php
+Class About_model extends CI_Model
+{
+
+  public function __construct() {
+        $this->load->database();
+    }
+ function get_text()
+ {
+   $query = $this->db->get_where('about',array('id'=>1));
+   return $query->row_array();  
+ }
+
+
+function update_text() {
+  $data = array(
+    'text'=>$this->input->post('text')
+    );
+  $this->db->update('about',$data);
+}
+}
+?> 
