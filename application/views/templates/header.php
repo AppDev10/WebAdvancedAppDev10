@@ -64,11 +64,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<li><a href='<?php echo base_url(array("event"))?>'>KALENDER</a></li>
 							<li><a href='<?php echo base_url(array("forum"))?>'>FORUM</a></li>
 						</ul>
-						<form class="navbar-form navbar-right" role="search">
+                                            <form class="navbar-form navbar-right" method="get" action="<?=base_url(array("Search","index"))?>" role="search">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
+                                                            <input name="searchInput" type="text" class="form-control" placeholder="Search">
 							</div>
-                                                    <button type="submit" class="btn btn-default">Zoek</button>
+							<button type="submit" class="btn btn-default">Zoek</button>
 						</form>
 					</div>
 				</div>
